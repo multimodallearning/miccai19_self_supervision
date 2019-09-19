@@ -9,6 +9,11 @@ We perform the following steps to preprocess the silvercorpus data and subsequen
 
 3) Next, we compute the center of mass (COM) for an organ mask of 6 foreground structures to crop the images to a common region of interest. Note that we use the silvercorpus annotations here only to compute the COMs. During the pretraining later on, the annotation quality of these labels does not matter, since our method only relies on spatial relations and does NOT use any label information.
     - We use a 3x3x3 structure element and a dilation factor of 15 to generate one mask containing all 6 foreground structures. 
-    - For this mask, we determine the COM per patient and the maximum distances over all patients between their COM positions and their respective dilated mask bounding box. This results in 6 values: 
+    - For this mask, we determine the COM per patient and the maximum distances over all patients between their COM positions and their respective dilated mask bounding box - resulting in 6 values: COM to front/back, left/right, top/bottom. 
+    - Based on these 6 values, we crop the regions around the COMs. Since depending on the COM position, for some patients not the full region can be extracted, all patients were subsequently cropped to the common minimal size over all dimensions.
+
+4) Finally, we apply the same procedure to the goldcorpus patients with manual organ annotations. However, the region cropping was performed with the same 6 COM-ROI parameters and minimum image sizes that were determined for the silvercorpus patients.
+
+The resulting image dimensions are 243x176x293 (LR-AP-SI).
 
 (1): Jimenez-del-Toro, Oscar, et al. "Cloud-based evaluation of anatomical structure segmentation and landmark detection algorithms: VISCERAL anatomy benchmarks." IEEE transactions on medical imaging 35.11 (2016): 2459-2475.

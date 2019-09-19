@@ -1,5 +1,6 @@
 ##################################################################################################
 This repository contains code and a description of the data preprocessing pipeline for our work 
+
 "How to learn from unlabeled volume data: Self-Supervised 3D Context Feature Learning"
 published at the MICCAI 2019 conference in Shenzhen, China.
 ##################################################################################################

@@ -6,5 +6,7 @@ Assuming, we have *n* labeled atlas images, for our unlabeled volume scans, we a
 In our work, we extract feature descriptors at every 4th voxel inside the volume scans for every method.
 To assign labels to these voxels, we rely on an approximate k-Nearest-Neighbor (kNN) search, that we introduced in our MICCAI 2016 submission (1) - [Vantage Point Forests](http://mpheinrich.de/code/vpForest_public.zip).
 
+We train 15 trees with a leaf size of 15 on the given atlas image database (with *n* growing from 1 to 9 to obtain the graph in Fig.2) and test the accuracy of our kNN-based labeling using the Dice coefficient. 
+
 
 (1): Heinrich, Mattias P., and Maximilian Blendowski. "Multi-organ segmentation using vantage point forests and binary context features." International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2016.
